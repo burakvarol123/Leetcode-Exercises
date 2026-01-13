@@ -6,12 +6,17 @@ class Solution(object):
         :rtype: List[int]
         """
         len_nums = len(nums)
-
+        d = {}
         for i in range(len_nums):
-            for j  in range(i+1 , len_nums):
-                sum = nums[i] + nums[j]
-                if sum == target:
-                    return [i,j]
+            number = nums[i]
+            complement = target - number
+            if complement in d:
+                return [d[complement] , i]
+            else:
+                d[number] = i
+                
+
+
                     
 
         
