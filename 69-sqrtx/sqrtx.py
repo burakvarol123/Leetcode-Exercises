@@ -4,11 +4,15 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        guess = 0
-        while guess *guess < x:
-            guess += 1
-        if guess *guess == x: 
-            return guess
-        else:
-            return guess - 1
-      
+        if x < 2:
+            return x
+        left, right = 1, x
+        while left<=right:
+            mid = (left + right) // 2
+            if mid * mid == x:
+                return mid
+            elif mid * mid < x:
+                left = mid + 1
+            else:
+                right = mid-1
+        return right
